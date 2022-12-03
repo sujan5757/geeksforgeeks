@@ -1,0 +1,22 @@
+       class Solution{
+    public:
+
+    //Function to check if two arrays are equal or not.
+    bool check(vector<ll> a, vector<ll> b, int n) {
+        map<int,int>mp;
+        for(int i=0;i<n;i++)
+        {
+            mp[a[i]]++;
+        }
+        for(int i=0;i<n;i++)
+        {
+            mp[b[i]]--;
+        }
+        for(auto it :mp)
+        {
+            if(it.second!=0)
+            return 0;
+        }
+        return 1;
+    }
+};
