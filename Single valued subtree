@@ -1,0 +1,34 @@
+
+class Solution
+{
+    public:
+    
+    bool solve(Node *root, int &ans){
+        if(root == NULL) return true;
+        
+        bool lt = solve(root->left, ans);
+        bool rt = solve(root->right, ans);
+        
+        if(lt == false || rt == false)
+        return false;
+        
+        if(root->left && root->data!=root->left->data)
+        return false;
+        
+        if(root->right && root->data!=root->right->data)
+        return false;
+        
+        ans++;
+        return true;
+    }
+    
+    int singlevalued(Node *root)
+    {
+        //code here
+        int ans = 0;
+        if(root == NULL) return 0;
+        solve(root, ans);
+        return ans;
+    }
+    
+};
